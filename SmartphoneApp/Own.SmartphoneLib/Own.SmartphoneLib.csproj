@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Smartphone.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SmartphoneList.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
