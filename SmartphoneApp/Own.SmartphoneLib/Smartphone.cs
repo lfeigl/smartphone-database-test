@@ -8,5 +8,8 @@ namespace Own.SmartphoneLib
 {
     public class Smartphone
     {
+        public string Manufacturer { get; set; }
+        public string Model { get; set; }
+        public double Price { get; set; }
     }
 }
