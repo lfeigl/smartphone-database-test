@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Own.SmartphoneTest", "Own.S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Own.SmartphoneLib", "Own.SmartphoneLib\Own.SmartphoneLib.csproj", "{78819ADA-64EC-497B-B889-6D9CF775BA03}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Own.SmartphoneGUI", "Own.SmartphoneGUI\Own.SmartphoneGUI.csproj", "{F921D1B1-7B4F-400A-8A1E-55F68354722B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{78819ADA-64EC-497B-B889-6D9CF775BA03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78819ADA-64EC-497B-B889-6D9CF775BA03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78819ADA-64EC-497B-B889-6D9CF775BA03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F921D1B1-7B4F-400A-8A1E-55F68354722B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F921D1B1-7B4F-400A-8A1E-55F68354722B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F921D1B1-7B4F-400A-8A1E-55F68354722B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F921D1B1-7B4F-400A-8A1E-55F68354722B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
