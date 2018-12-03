@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Own.SmartphoneLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,27 @@ namespace Own.SmartphoneGUI
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_AddSmartphone_Click(object sender, RoutedEventArgs e)
+        {
+            SmartphoneList spList = new SmartphoneList();
+            Smartphone sp = new Smartphone();
+
+            sp.InternalId = Convert.ToInt32(TextBox_InternalId.Text);
+            sp.Manufacturer = TextBox_Manufacturer.Text;
+            sp.Model = TextBox_Model.Text;
+            sp.Price = Convert.ToDouble(TextBox_Price.Text);
+
+            spList.Add(sp);
+
+
+            TextBox_InternalId.Text = string.Empty;
+            TextBox_Manufacturer.Text = string.Empty;
+            TextBox_Model.Text = string.Empty;
+            TextBox_Price.Text = string.Empty;
+
+            TextBox_InternalId.Focus();
         }
     }
 }
