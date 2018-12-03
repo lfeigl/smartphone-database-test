@@ -34,6 +34,7 @@ namespace Own.SmartphoneTest
 
             foreach (Smartphone listSp in spList)
             {
+                Console.WriteLine("ID: " + listSp.Id);
                 Console.WriteLine("Internal ID: " + listSp.InternalId);
                 Console.WriteLine("Manufacturer: " + listSp.Manufacturer);
                 Console.WriteLine("Model: " + listSp.Model);
