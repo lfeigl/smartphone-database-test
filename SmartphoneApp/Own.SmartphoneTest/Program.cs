@@ -40,6 +40,21 @@ namespace Own.SmartphoneTest
                 Console.WriteLine("Price: " + listSp.Price);
                 Console.WriteLine("- - -");
             }
+
+
+            Smartphone found = spList.GetByInternalId(1);
+            Console.WriteLine("Found: " + found.Model);
+
+            Smartphone cheapest = spList.GetCheapest();
+            Console.WriteLine("Cheapest: " + cheapest.Model);
+
+
+            spList.SetDiscount(5);
+
+            foreach (Smartphone listSp in spList)
+            {
+                Console.WriteLine(listSp.Model + " - new price: " + listSp.Price);
+            }
         }
     }
 }
