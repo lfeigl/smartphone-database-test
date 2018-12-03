@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Own.SmartphoneLib
 {
-    public class Smartphone
+    public class Smartphone : DomainObject
     {
         public int InternalId { get; set; }
         public string Manufacturer { get; set; }
