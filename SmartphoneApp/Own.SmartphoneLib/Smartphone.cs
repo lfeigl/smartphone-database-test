@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Own.SmartphoneLib
 {
+    [Serializable()]
     public class Smartphone : DomainObject
     {
         public int InternalId { get; set; }
