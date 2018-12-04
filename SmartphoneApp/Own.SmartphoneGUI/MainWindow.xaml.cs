@@ -37,6 +37,7 @@ namespace Own.SmartphoneGUI
             sp.Price = Convert.ToDouble(TextBox_Price.Text);
 
             spList.Add(sp);
+            ListView_Smartphones.Items.Add(sp);
 
 
             TextBox_InternalId.Text = string.Empty;
