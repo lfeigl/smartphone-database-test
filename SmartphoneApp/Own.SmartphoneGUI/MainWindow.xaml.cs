@@ -21,14 +21,21 @@ namespace Own.SmartphoneGUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        private SmartphoneList spList = new SmartphoneList();
+
         public MainWindow()
         {
             InitializeComponent();
+            spList.Deserialize();
+
+            foreach (Smartphone listSp in spList)
+            {
+                ListView_Smartphones.Items.Add(listSp);
+            }
         }
 
         private void Button_AddSmartphone_Click(object sender, RoutedEventArgs e)
         {
-            SmartphoneList spList = new SmartphoneList();
             Smartphone sp = new Smartphone();
 
             sp.InternalId = Convert.ToInt32(TextBox_InternalId.Text);
@@ -36,8 +43,10 @@ namespace Own.SmartphoneGUI
             sp.Model = TextBox_Model.Text;
             sp.Price = Convert.ToDouble(TextBox_Price.Text);
 
-            spList.Add(sp);
             ListView_Smartphones.Items.Add(sp);
+
+            spList.Add(sp);
+            spList.Serialize();
 
 
             TextBox_InternalId.Text = string.Empty;
