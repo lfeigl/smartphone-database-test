@@ -1,13 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Own.SmartphoneLib
 {
-    public class SmartphoneList : List<Smartphone>
+    [Serializable()]
+    public class SmartphoneList : List<Smartphone>, ISerializable
     {
+        public void Serialize()
+        {
+            BinaryFormatter binFormatter = new BinaryFormatter();
+            FileStream fStream = new FileStream(@"added_smartphones.bin", FileMode.Create);
+
+            binFormatter.Serialize(fStream, this);
+            fStream.Close();
+        }
+
+        public void Deserialize()
+        {
+            BinaryFormatter binFormatter = new BinaryFormatter();
+            FileStream fStream = new FileStream(@"added_smartphones.bin", FileMode.Open);
+            SmartphoneList deserialized = null;
+
+            deserialized = (SmartphoneList)binFormatter.Deserialize(fStream);
+            fStream.Close();
+
+            this.AddRange(deserialized);
+        }
+
         public Smartphone GetByInternalId(int internalId)
         {
             Smartphone sp = null;
