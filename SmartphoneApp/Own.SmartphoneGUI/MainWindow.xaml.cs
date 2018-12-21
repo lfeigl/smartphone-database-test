@@ -1,4 +1,5 @@
-﻿using Own.SmartphoneLib;
+﻿using Microsoft.Win32;
+using Own.SmartphoneLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,16 +23,11 @@ namespace Own.SmartphoneGUI
     public partial class MainWindow : Window
     {
         private SmartphoneList spList = new SmartphoneList();
+        private string fileDialogFilter = "Binary files|*.bin";
 
         public MainWindow()
         {
             InitializeComponent();
-            spList.Deserialize();
-
-            foreach (Smartphone listSp in spList)
-            {
-                ListView_Smartphones.Items.Add(listSp);
-            }
         }
 
         private void Button_AddSmartphone_Click(object sender, RoutedEventArgs e)
@@ -44,10 +40,7 @@ namespace Own.SmartphoneGUI
             sp.Price = Convert.ToDouble(TextBox_Price.Text);
 
             ListView_Smartphones.Items.Add(sp);
-
             spList.Add(sp);
-            spList.Serialize();
-
 
             TextBox_InternalId.Text = string.Empty;
             TextBox_Manufacturer.Text = string.Empty;
@@ -55,6 +48,37 @@ namespace Own.SmartphoneGUI
             TextBox_Price.Text = string.Empty;
 
             TextBox_InternalId.Focus();
+        }
+
+        private void Button_OpenList_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            ofd.Filter = fileDialogFilter;
+
+            if (ofd.ShowDialog() == true)
+            {
+                spList.Deserialize(ofd.FileName);
+                ListView_Smartphones.Items.Clear();
+
+                foreach (Smartphone listSp in spList)
+                {
+                    ListView_Smartphones.Items.Add(listSp);
+                }
+            }
+        }
+
+        private void Button_SaveList_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+
+            sfd.FileName = "MySmartphoneList.bin";
+            sfd.Filter = fileDialogFilter;
+
+            if (sfd.ShowDialog() == true)
+            {
+                spList.Serialize(sfd.FileName);
+            }
         }
     }
 }
