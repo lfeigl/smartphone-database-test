@@ -29,6 +29,7 @@ namespace Own.SmartphoneLib
             deserialized = (SmartphoneList)binFormatter.Deserialize(fStream);
             fStream.Close();
 
+            this.Clear();
             this.AddRange(deserialized);
         }
 
