@@ -8,7 +8,7 @@ namespace Own.SmartphoneLib
 {
     interface ISerializable
     {
-        void Serialize();
-        void Deserialize();
+        void Serialize(string path);
+        void Deserialize(string path);
     }
 }

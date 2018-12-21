@@ -11,19 +11,19 @@ namespace Own.SmartphoneLib
     [Serializable()]
     public class SmartphoneList : List<Smartphone>, ISerializable
     {
-        public void Serialize()
+        public void Serialize(string path)
         {
             BinaryFormatter binFormatter = new BinaryFormatter();
-            FileStream fStream = new FileStream(@"added_smartphones.bin", FileMode.Create);
+            FileStream fStream = new FileStream(@path, FileMode.Create);
 
             binFormatter.Serialize(fStream, this);
             fStream.Close();
         }
 
-        public void Deserialize()
+        public void Deserialize(string path)
         {
             BinaryFormatter binFormatter = new BinaryFormatter();
-            FileStream fStream = new FileStream(@"added_smartphones.bin", FileMode.Open);
+            FileStream fStream = new FileStream(@path, FileMode.Open);
             SmartphoneList deserialized = null;
 
             deserialized = (SmartphoneList)binFormatter.Deserialize(fStream);
