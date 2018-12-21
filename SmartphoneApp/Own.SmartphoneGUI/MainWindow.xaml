@@ -15,8 +15,10 @@
         <TextBox x:Name="TextBox_Manufacturer" HorizontalAlignment="Left" Height="23" Margin="99,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="TextBox_Model" HorizontalAlignment="Left" Height="23" Margin="99,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="TextBox_Price" HorizontalAlignment="Left" Height="23" Margin="99,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="Button_AddSmartphone" Content="Add" HorizontalAlignment="Left" Margin="144,131,0,0" VerticalAlignment="Top" Width="75" Click="Button_AddSmartphone_Click"/>
-        <ListView x:Name="ListView_Smartphones" HorizontalAlignment="Left" Height="141" Margin="224,10,0,0" VerticalAlignment="Top" Width="560">
+        <Button x:Name="Button_AddSmartphone" Content="Add" HorizontalAlignment="Left" Margin="224,10,0,0" VerticalAlignment="Top" Width="75" Click="Button_AddSmartphone_Click" Height="116"/>
+        <Button x:Name="Button_OpenList" Content="Open" HorizontalAlignment="Left" Margin="699,10,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="Button_SaveList" Content="Save" HorizontalAlignment="Left" Margin="699,35,0,0" VerticalAlignment="Top" Width="75"/>
+        <ListView x:Name="ListView_Smartphones" HorizontalAlignment="Left" Height="267" Margin="10,134,0,0" VerticalAlignment="Top" Width="764">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Internal ID" DisplayMemberBinding="{Binding InternalId}"/>
@@ -27,6 +29,5 @@
                 </GridView>
             </ListView.View>
         </ListView>
-
     </Grid>
 </Window>
