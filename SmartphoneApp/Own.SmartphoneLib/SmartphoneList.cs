@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using CsvHelper;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -34,6 +35,14 @@ namespace Own.SmartphoneLib
 
                 serializer.Serialize(streamW, this);
                 streamW.Close();
+            }
+            else if (ext.Equals(".csv"))
+            {
+                using (StreamWriter streamW = new StreamWriter(@path))
+                using (CsvWriter serializer = new CsvWriter(streamW))
+                {
+                    serializer.WriteRecords(this);
+                }
             }
             else if (ext.Equals(".bin"))
             {
