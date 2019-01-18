@@ -73,7 +73,7 @@ namespace Own.SmartphoneLib
 
             foreach (Smartphone listSp in this)
             {
-                if (listSp.InternalId == internalId)
+                if (listSp.InternalId.Equals(internalId))
                 {
                     sp = listSp;
                     break;

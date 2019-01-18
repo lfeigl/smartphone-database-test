@@ -58,7 +58,7 @@ namespace Own.SmartphoneGUI
                 Filter = fileDialogFilter
             };
 
-            if (ofd.ShowDialog() == true)
+            if (ofd.ShowDialog().Equals(true))
             {
                 spList.Deserialize(ofd.FileName);
                 ListView_Smartphones.Items.Clear();
@@ -78,7 +78,7 @@ namespace Own.SmartphoneGUI
                 Filter = fileDialogFilter
             };
 
-            if (sfd.ShowDialog() == true)
+            if (sfd.ShowDialog().Equals(true))
             {
                 spList.Serialize(sfd.FileName);
             }
