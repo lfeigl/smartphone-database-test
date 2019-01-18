@@ -76,6 +76,15 @@ namespace Own.SmartphoneLib
                 deserialized = (SmartphoneList)serializer.Deserialize(streamR);
                 streamR.Close();
             }
+            else if (ext.Equals(".csv"))
+            {
+                using (StreamReader streamR = new StreamReader(@path))
+                using (CsvReader serializer = new CsvReader(streamR))
+                {
+                    List<Smartphone> smartphones = serializer.GetRecords<Smartphone>().ToList();
+                    deserialized.AddRange(smartphones);
+                }
+            }
             else if (ext.Equals(".bin"))
             {
                 FileStream streamR = new FileStream(@path, FileMode.Open);
