@@ -49,6 +49,27 @@ namespace Own.SmartphoneLib
             return sp;
         }
 
+        public SmartphoneList GetByManufacturer(string manufacturer)
+        {
+            SmartphoneList spList = new SmartphoneList();
+
+            foreach (Smartphone listSp in this)
+            {
+                if (listSp.Manufacturer.Equals(manufacturer))
+                {
+                    spList.Add(listSp);
+                }
+            }
+
+            if (spList.Any())
+            {
+                return spList;
+            } else
+            {
+                return null;
+            }
+        }
+
         public Smartphone GetCheapest()
         {
             Smartphone sp = this[0];
