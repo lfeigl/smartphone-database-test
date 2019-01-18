@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,11 +14,26 @@ namespace Own.SmartphoneLib
     {
         public void Serialize(string path)
         {
-            BinaryFormatter binFormatter = new BinaryFormatter();
-            FileStream fStream = new FileStream(@path, FileMode.Create);
+            string ext = Path.GetExtension(path);
 
-            binFormatter.Serialize(fStream, this);
-            fStream.Close();
+            if (ext.Equals(".json"))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                using (StreamWriter streamW = new StreamWriter(@path))
+                using (JsonWriter writer = new JsonTextWriter(streamW))
+                {
+                    writer.Formatting = Formatting.Indented;
+                    serializer.Serialize(writer, this);
+                }
+            }
+            else if (ext.Equals(".bin"))
+            {
+                FileStream streamW = new FileStream(@path, FileMode.Create);
+                BinaryFormatter serializer = new BinaryFormatter();
+
+                serializer.Serialize(streamW, this);
+                streamW.Close();
+            }
         }
 
         public void Deserialize(string path)
