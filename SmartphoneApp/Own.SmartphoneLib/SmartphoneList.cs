@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Own.SmartphoneLib
 {
@@ -25,6 +26,14 @@ namespace Own.SmartphoneLib
                     writer.Formatting = Formatting.Indented;
                     serializer.Serialize(writer, this);
                 }
+            }
+            else if (ext.Equals(".xml"))
+            {
+                FileStream streamW = new FileStream(@path, FileMode.Create);
+                XmlSerializer serializer = new XmlSerializer(typeof(SmartphoneList));
+
+                serializer.Serialize(streamW, this);
+                streamW.Close();
             }
             else if (ext.Equals(".bin"))
             {
