@@ -74,7 +74,7 @@ namespace Own.SmartphoneGUI
         {
             SaveFileDialog sfd = new SaveFileDialog
             {
-                FileName = "MySmartphoneList.bin",
+                FileName = "MySmartphoneList",
                 Filter = fileDialogFilter
             };
 
