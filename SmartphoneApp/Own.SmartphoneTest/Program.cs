@@ -12,22 +12,24 @@ namespace Own.SmartphoneTest
         static void Main(string[] args)
         {
             SmartphoneList spList = new SmartphoneList();
-            Smartphone sp = new Smartphone();
-
-            sp.InternalId = 1;
-            sp.Manufacturer = "Apple";
-            sp.Model = "iPhone X";
-            sp.Price = 850.99;
+            Smartphone sp = new Smartphone
+            {
+                InternalId = 1,
+                Manufacturer = "Apple",
+                Model = "iPhone X",
+                Price = 850.99
+            };
 
             spList.Add(sp);
 
 
-            sp = new Smartphone();
-
-            sp.InternalId = 2;
-            sp.Manufacturer = "Samsung";
-            sp.Model = "Galaxy S9";
-            sp.Price = 500.99;
+            sp = new Smartphone
+            {
+                InternalId = 2,
+                Manufacturer = "Samsung",
+                Model = "Galaxy S9",
+                Price = 500.99
+            };
 
             spList.Add(sp);
 
