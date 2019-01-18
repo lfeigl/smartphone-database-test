@@ -68,6 +68,14 @@ namespace Own.SmartphoneLib
                     deserialized = serializer.Deserialize<SmartphoneList>(reader);
                 }
             }
+            else if (ext.Equals(".xml"))
+            {
+                FileStream streamR = new FileStream(@path, FileMode.Open);
+                XmlSerializer serializer = new XmlSerializer(typeof(SmartphoneList));
+
+                deserialized = (SmartphoneList)serializer.Deserialize(streamR);
+                streamR.Close();
+            }
             else if (ext.Equals(".bin"))
             {
                 FileStream streamR = new FileStream(@path, FileMode.Open);
