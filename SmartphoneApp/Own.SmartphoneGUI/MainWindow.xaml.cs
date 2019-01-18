@@ -32,12 +32,13 @@ namespace Own.SmartphoneGUI
 
         private void Button_AddSmartphone_Click(object sender, RoutedEventArgs e)
         {
-            Smartphone sp = new Smartphone();
-
-            sp.InternalId = Convert.ToInt32(TextBox_InternalId.Text);
-            sp.Manufacturer = TextBox_Manufacturer.Text;
-            sp.Model = TextBox_Model.Text;
-            sp.Price = Convert.ToDouble(TextBox_Price.Text);
+            Smartphone sp = new Smartphone
+            {
+                InternalId = Convert.ToInt32(TextBox_InternalId.Text),
+                Manufacturer = TextBox_Manufacturer.Text,
+                Model = TextBox_Model.Text,
+                Price = Convert.ToDouble(TextBox_Price.Text)
+            };
 
             ListView_Smartphones.Items.Add(sp);
             spList.Add(sp);
@@ -52,9 +53,10 @@ namespace Own.SmartphoneGUI
 
         private void Button_OpenList_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-
-            ofd.Filter = fileDialogFilter;
+            OpenFileDialog ofd = new OpenFileDialog
+            {
+                Filter = fileDialogFilter
+            };
 
             if (ofd.ShowDialog() == true)
             {
@@ -70,10 +72,11 @@ namespace Own.SmartphoneGUI
 
         private void Button_SaveList_Click(object sender, RoutedEventArgs e)
         {
-            SaveFileDialog sfd = new SaveFileDialog();
-
-            sfd.FileName = "MySmartphoneList.bin";
-            sfd.Filter = fileDialogFilter;
+            SaveFileDialog sfd = new SaveFileDialog
+            {
+                FileName = "MySmartphoneList.bin",
+                Filter = fileDialogFilter
+            };
 
             if (sfd.ShowDialog() == true)
             {
