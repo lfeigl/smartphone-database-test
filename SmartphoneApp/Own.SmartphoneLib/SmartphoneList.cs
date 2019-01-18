@@ -56,12 +56,26 @@ namespace Own.SmartphoneLib
 
         public void Deserialize(string path)
         {
-            BinaryFormatter binFormatter = new BinaryFormatter();
-            FileStream fStream = new FileStream(@path, FileMode.Open);
-            SmartphoneList deserialized = null;
+            string ext = Path.GetExtension(path);
+            SmartphoneList deserialized = new SmartphoneList();
 
-            deserialized = (SmartphoneList)binFormatter.Deserialize(fStream);
-            fStream.Close();
+            if (ext.Equals(".json"))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                using (StreamReader streamR = new StreamReader(@path))
+                using (JsonReader reader = new JsonTextReader(streamR))
+                {
+                    deserialized = serializer.Deserialize<SmartphoneList>(reader);
+                }
+            }
+            else if (ext.Equals(".bin"))
+            {
+                FileStream streamR = new FileStream(@path, FileMode.Open);
+                BinaryFormatter serializer = new BinaryFormatter();
+
+                deserialized = (SmartphoneList)serializer.Deserialize(streamR);
+                streamR.Close();
+            }
 
             this.Clear();
             this.AddRange(deserialized);
