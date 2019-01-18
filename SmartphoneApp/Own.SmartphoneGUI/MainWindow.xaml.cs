@@ -23,7 +23,7 @@ namespace Own.SmartphoneGUI
     public partial class MainWindow : Window
     {
         private SmartphoneList spList = new SmartphoneList();
-        private string fileDialogFilter = "JSON files|*.json|Binary files|*.bin";
+        private string fileDialogFilter = "JSON files|*.json|XML files|*.xml|Binary files|*.bin";
 
         public MainWindow()
         {
