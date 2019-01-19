@@ -126,13 +126,7 @@ namespace Own.SmartphoneLib
                 }
             }
 
-            if (spList.Any())
-            {
-                return spList;
-            } else
-            {
-                return null;
-            }
+            return spList;
         }
 
         public Smartphone GetCheapest()
