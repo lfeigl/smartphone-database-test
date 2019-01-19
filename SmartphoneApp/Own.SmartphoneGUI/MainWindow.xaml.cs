@@ -83,5 +83,10 @@ namespace Own.SmartphoneGUI
                 spList.Serialize(sfd.FileName);
             }
         }
+
+        private void ComboBox_FilterManufacturer_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
