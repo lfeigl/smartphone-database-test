@@ -23,11 +23,14 @@ namespace Own.SmartphoneGUI
     public partial class MainWindow : Window
     {
         private SmartphoneList spList = new SmartphoneList();
-        private string fileDialogFilter = "JSON files|*.json|XML files|*.xml|CSV files|*.csv|Binary files|*.bin";
+        private string MANUFACTURER_FILTER_ALL = "All";
+        private string FILE_DIALOG_FILTER = "JSON files|*.json|XML files|*.xml|CSV files|*.csv|Binary files|*.bin";
 
         public MainWindow()
         {
             InitializeComponent();
+            ComboBox_FilterManufacturer.Items.Add(MANUFACTURER_FILTER_ALL);
+            ComboBox_FilterManufacturer.SelectedItem = MANUFACTURER_FILTER_ALL;
         }
 
         private void Button_AddSmartphone_Click(object sender, RoutedEventArgs e)
@@ -55,7 +58,7 @@ namespace Own.SmartphoneGUI
         {
             OpenFileDialog ofd = new OpenFileDialog
             {
-                Filter = fileDialogFilter
+                Filter = FILE_DIALOG_FILTER
             };
 
             if (ofd.ShowDialog().Equals(true))
@@ -75,7 +78,7 @@ namespace Own.SmartphoneGUI
             SaveFileDialog sfd = new SaveFileDialog
             {
                 FileName = "MySmartphoneList",
-                Filter = fileDialogFilter
+                Filter = FILE_DIALOG_FILTER
             };
 
             if (sfd.ShowDialog().Equals(true))
