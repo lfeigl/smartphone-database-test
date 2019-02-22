@@ -23,6 +23,7 @@ namespace Own.SmartphoneGUI
     public partial class MainWindow : Window
     {
         private SmartphoneList spList = new SmartphoneList();
+        private HashSet<string> manufacturers = new HashSet<string>();
         private string MANUFACTURER_FILTER_ALL = "All";
         private string FILE_DIALOG_FILTER = "JSON files|*.json|XML files|*.xml|CSV files|*.csv|Binary files|*.bin";
 
@@ -44,6 +45,7 @@ namespace Own.SmartphoneGUI
             };
 
             ListView_Smartphones.Items.Add(sp);
+            AddManufacturerFilter(sp.Manufacturer);
             spList.Add(sp);
 
             TextBox_InternalId.Text = string.Empty;
@@ -65,10 +67,12 @@ namespace Own.SmartphoneGUI
             {
                 spList.Deserialize(ofd.FileName);
                 ListView_Smartphones.Items.Clear();
+                manufacturers.Clear();
 
                 foreach (Smartphone listSp in spList)
                 {
                     ListView_Smartphones.Items.Add(listSp);
+                    AddManufacturerFilter(listSp.Manufacturer);
                 }
             }
         }
@@ -90,6 +94,19 @@ namespace Own.SmartphoneGUI
         private void ComboBox_FilterManufacturer_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void AddManufacturerFilter(string manufacturer)
+        {
+            ComboBox_FilterManufacturer.Items.Clear();
+            ComboBox_FilterManufacturer.Items.Add(MANUFACTURER_FILTER_ALL);
+            ComboBox_FilterManufacturer.SelectedItem = MANUFACTURER_FILTER_ALL;
+            manufacturers.Add(manufacturer);
+
+            foreach(string listManufacturer in manufacturers)
+            {
+                ComboBox_FilterManufacturer.Items.Add(listManufacturer);
+            }
         }
     }
 }
