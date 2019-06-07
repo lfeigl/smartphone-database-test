@@ -44,9 +44,9 @@ namespace Own.SmartphoneGUI
                 Price = Convert.ToDouble(TextBox_Price.Text)
             };
 
+            spList.Add(sp);
             ListView_Smartphones.Items.Add(sp);
             AddManufacturerFilter(sp.Manufacturer);
-            spList.Add(sp);
 
             TextBox_InternalId.Text = string.Empty;
             TextBox_Manufacturer.Text = string.Empty;
@@ -93,7 +93,24 @@ namespace Own.SmartphoneGUI
 
         private void ComboBox_FilterManufacturer_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            string manufacturer = (string)ComboBox_FilterManufacturer.SelectedItem;
+            SmartphoneList filtered = null;
 
+            ListView_Smartphones.Items.Clear();
+
+            if (manufacturer != null && manufacturer.Equals(MANUFACTURER_FILTER_ALL))
+            {
+                filtered = spList;
+            }
+            else
+            {
+                filtered = spList.GetByManufacturer(manufacturer);
+            }
+
+            foreach (Smartphone listSp in filtered)
+            {
+                ListView_Smartphones.Items.Add(listSp);
+            }
         }
 
         private void AddManufacturerFilter(string manufacturer)
@@ -103,7 +120,7 @@ namespace Own.SmartphoneGUI
             ComboBox_FilterManufacturer.SelectedItem = MANUFACTURER_FILTER_ALL;
             manufacturers.Add(manufacturer);
 
-            foreach(string listManufacturer in manufacturers)
+            foreach (string listManufacturer in manufacturers)
             {
                 ComboBox_FilterManufacturer.Items.Add(listManufacturer);
             }
