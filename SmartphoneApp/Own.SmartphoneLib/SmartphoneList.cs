@@ -12,85 +12,14 @@ namespace Own.SmartphoneLib
     [Serializable()]
     public class SmartphoneList : List<Smartphone>
     {
-        public void Serialize(string path)
+        public void Serialize(ISerializable serializer, string path)
         {
-            string ext = Path.GetExtension(path);
-
-            if (ext.Equals(".json"))
-            {
-                JsonSerializer serializer = new JsonSerializer();
-                using (StreamWriter streamW = new StreamWriter(@path))
-                using (JsonWriter writer = new JsonTextWriter(streamW))
-                {
-                    writer.Formatting = Formatting.Indented;
-                    serializer.Serialize(writer, this);
-                }
-            }
-            else if (ext.Equals(".xml"))
-            {
-                FileStream streamW = new FileStream(@path, FileMode.Create);
-                XmlSerializer serializer = new XmlSerializer(typeof(SmartphoneList));
-
-                serializer.Serialize(streamW, this);
-                streamW.Close();
-            }
-            else if (ext.Equals(".csv"))
-            {
-                using (StreamWriter streamW = new StreamWriter(@path))
-                using (CsvWriter serializer = new CsvWriter(streamW))
-                {
-                    serializer.WriteRecords(this);
-                }
-            }
-            else if (ext.Equals(".bin"))
-            {
-                FileStream streamW = new FileStream(@path, FileMode.Create);
-                BinaryFormatter serializer = new BinaryFormatter();
-
-                serializer.Serialize(streamW, this);
-                streamW.Close();
-            }
+            serializer.Serialize(path, this);
         }
 
-        public void Deserialize(string path)
+        public void Deserialize(ISerializable serializer, string path)
         {
-            string ext = Path.GetExtension(path);
-            SmartphoneList deserialized = new SmartphoneList();
-
-            if (ext.Equals(".json"))
-            {
-                JsonSerializer serializer = new JsonSerializer();
-                using (StreamReader streamR = new StreamReader(@path))
-                using (JsonReader reader = new JsonTextReader(streamR))
-                {
-                    deserialized = serializer.Deserialize<SmartphoneList>(reader);
-                }
-            }
-            else if (ext.Equals(".xml"))
-            {
-                FileStream streamR = new FileStream(@path, FileMode.Open);
-                XmlSerializer serializer = new XmlSerializer(typeof(SmartphoneList));
-
-                deserialized = (SmartphoneList)serializer.Deserialize(streamR);
-                streamR.Close();
-            }
-            else if (ext.Equals(".csv"))
-            {
-                using (StreamReader streamR = new StreamReader(@path))
-                using (CsvReader serializer = new CsvReader(streamR))
-                {
-                    List<Smartphone> smartphones = serializer.GetRecords<Smartphone>().ToList();
-                    deserialized.AddRange(smartphones);
-                }
-            }
-            else if (ext.Equals(".bin"))
-            {
-                FileStream streamR = new FileStream(@path, FileMode.Open);
-                BinaryFormatter serializer = new BinaryFormatter();
-
-                deserialized = (SmartphoneList)serializer.Deserialize(streamR);
-                streamR.Close();
-            }
+            SmartphoneList deserialized = serializer.Deserialize(path);
 
             this.Clear();
             this.AddRange(deserialized);

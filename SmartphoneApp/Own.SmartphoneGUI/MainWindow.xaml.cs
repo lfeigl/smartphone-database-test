@@ -2,6 +2,7 @@
 using Own.SmartphoneLib;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -55,14 +56,20 @@ namespace Own.SmartphoneGUI
 
             if (ofd.ShowDialog().Equals(true))
             {
-                spList.Deserialize(ofd.FileName);
-                ListView_Smartphones.Items.Clear();
-                manufacturers.Clear();
+                string path = ofd.FileName;
+                ISerializable serializer = GetSerializer(path);
 
-                foreach (Smartphone listSp in spList)
+                if (serializer != null)
                 {
-                    ListView_Smartphones.Items.Add(listSp);
-                    AddManufacturerFilter(listSp.Manufacturer);
+                    spList.Deserialize(serializer, path);
+                    ListView_Smartphones.Items.Clear();
+                    manufacturers.Clear();
+
+                    foreach (Smartphone listSp in spList)
+                    {
+                        ListView_Smartphones.Items.Add(listSp);
+                        AddManufacturerFilter(listSp.Manufacturer);
+                    }
                 }
             }
         }
@@ -77,7 +84,13 @@ namespace Own.SmartphoneGUI
 
             if (sfd.ShowDialog().Equals(true))
             {
-                spList.Serialize(sfd.FileName);
+                string path = sfd.FileName;
+                ISerializable serializer = GetSerializer(path);
+
+                if (serializer != null)
+                {
+                    spList.Serialize(serializer, path);
+                }
             }
         }
 
@@ -114,6 +127,31 @@ namespace Own.SmartphoneGUI
             {
                 ComboBox_FilterManufacturer.Items.Add(listManufacturer);
             }
+        }
+
+        private ISerializable GetSerializer(string path)
+        {
+            string ext = Path.GetExtension(path);
+            ISerializable serializer = null;
+
+            if (ext.Equals(".json"))
+            {
+                serializer = new JSONSerializer();
+            }
+            else if (ext.Equals(".xml"))
+            {
+                serializer = new XMLSerializer();
+            }
+            else if (ext.Equals(".csv"))
+            {
+                serializer = new CSVSerializer();
+            }
+            else if (ext.Equals(".bin"))
+            {
+                serializer = new BinarySerializer();
+            }
+
+            return serializer;
         }
     }
 }
