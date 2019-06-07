@@ -10,7 +10,7 @@ using System.Xml.Serialization;
 namespace Own.SmartphoneLib
 {
     [Serializable()]
-    public class SmartphoneList : List<Smartphone>, ISerializable
+    public class SmartphoneList : List<Smartphone>
     {
         public void Serialize(string path)
         {
