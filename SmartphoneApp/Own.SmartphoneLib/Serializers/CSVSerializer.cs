@@ -1,7 +1,5 @@
 ﻿using CsvHelper;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace Own.SmartphoneLib
 {
@@ -22,8 +20,9 @@ namespace Own.SmartphoneLib
             using (StreamReader streamR = new StreamReader(@path))
             using (CsvReader serializer = new CsvReader(streamR))
             {
-                List<Smartphone> smartphones = serializer.GetRecords<Smartphone>().ToList();
-                deserialized.AddRange(smartphones);
+                foreach (Smartphone listSp in serializer.GetRecords<Smartphone>()) {
+                    deserialized.Add(listSp);
+                }
 
                 return deserialized;
             }
