@@ -15,6 +15,7 @@ namespace Own.SmartphoneGUI
     {
         private SmartphoneList spList = new SmartphoneList();
         private HashSet<string> manufacturers = new HashSet<string>();
+        private string EMPTY_PROPERTY_VALUE = "(undefined)";
         private string MANUFACTURER_FILTER_ALL = "All";
         private string FILE_DIALOG_FILTER = "JSON files|*.json|XML files|*.xml|CSV files|*.csv|Binary files|*.bin";
 
@@ -29,9 +30,9 @@ namespace Own.SmartphoneGUI
         {
             Smartphone sp = new Smartphone
             {
-                InternalId = TextBox_InternalId.Text,
-                Manufacturer = TextBox_Manufacturer.Text,
-                Model = TextBox_Model.Text,
+                InternalId = (TextBox_InternalId.Text.Equals(string.Empty)) ? EMPTY_PROPERTY_VALUE : TextBox_InternalId.Text,
+                Manufacturer = (TextBox_Manufacturer.Text.Equals(string.Empty)) ? EMPTY_PROPERTY_VALUE : TextBox_Manufacturer.Text,
+                Model = (TextBox_Model.Text.Equals(string.Empty)) ? EMPTY_PROPERTY_VALUE : TextBox_Model.Text,
             };
 
             try
