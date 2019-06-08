@@ -29,11 +29,19 @@ namespace Own.SmartphoneGUI
         {
             Smartphone sp = new Smartphone
             {
-                InternalId = Convert.ToInt32(TextBox_InternalId.Text),
+                InternalId = TextBox_InternalId.Text,
                 Manufacturer = TextBox_Manufacturer.Text,
                 Model = TextBox_Model.Text,
-                Price = Convert.ToDouble(TextBox_Price.Text)
             };
+
+            try
+            {
+                sp.Price = Convert.ToDouble(TextBox_Price.Text);
+            }
+            catch (Exception ex) when (ex is FormatException || ex is OverflowException)
+            {
+                sp.Price = 0;
+            }
 
             spList.Add(sp);
             ListView_Smartphones.Items.Add(sp);
