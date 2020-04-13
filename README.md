@@ -1,2 +1,2 @@
-# smartphone-db-manager-test
+# smartphone-database-test
 Sample C# project for managing smartphones in a database.
