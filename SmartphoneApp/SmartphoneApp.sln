@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.136
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Own.SmartphoneTest", "Own.SmartphoneTest\Own.SmartphoneTest.csproj", "{09D15168-1385-4600-AE7E-CEB30140D6D8}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Own.SmartphoneLib", "Own.SmartphoneLib\Own.SmartphoneLib.csproj", "{78819ADA-64EC-497B-B889-6D9CF775BA03}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Own.SmartphoneGUI", "Own.SmartphoneGUI\Own.SmartphoneGUI.csproj", "{F921D1B1-7B4F-400A-8A1E-55F68354722B}"
@@ -15,10 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{09D15168-1385-4600-AE7E-CEB30140D6D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{09D15168-1385-4600-AE7E-CEB30140D6D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{09D15168-1385-4600-AE7E-CEB30140D6D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{09D15168-1385-4600-AE7E-CEB30140D6D8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{78819ADA-64EC-497B-B889-6D9CF775BA03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{78819ADA-64EC-497B-B889-6D9CF775BA03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78819ADA-64EC-497B-B889-6D9CF775BA03}.Release|Any CPU.ActiveCfg = Release|Any CPU
